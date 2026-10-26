@@ -1,0 +1,33 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      # 测试不加载 onnx 模型、不调 ffmpeg、不联网，所以只装纯 Python 依赖
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest python-docx
+
+      - name: Run tests
+        env:
+          PYTHONPATH: src
+        run: pytest tests -q

@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "video-notes-pipeline"
+version = "1.0.0"
+description = "把直播/课程视频转成结构化课堂笔记（转写 → 笔记 → docx → 推送）"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+dependencies = [
+    "sherpa-onnx>=1.10",
+    "numpy>=1.24",
+    "python-docx>=1.1",
+    "openai>=1.30",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+
+[project.scripts]
+vnotes = "vnotes.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.coverage.run]
+source = ["vnotes"]
+omit = ["src/vnotes/cli.py"]

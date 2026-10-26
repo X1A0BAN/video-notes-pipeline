@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 本地配置（含真实路径，各自维护）
+config/settings.json
+
+# 模型与产出（体积大，不入库）
+models/**/*.onnx
+models/**/*.txt
+output/
+input/
+*.mp4
+*.mkv
+*.wav
+*.docx
+
+# 编辑器
+.vscode/
+.idea/
+.DS_Store

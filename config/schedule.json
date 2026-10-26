@@ -1,0 +1,19 @@
+{
+  "_comment": "讲师排班表。weekday: 0=周一 … 6=周日。holidays 用于剔除休市日（当日不直播）。",
+  "lecturers": [
+    {
+      "name": "张明",
+      "registration_id": "A0000000000001",
+      "weekdays": [6, 1, 3],
+      "aliases": ["张老师", "张明老师"]
+    },
+    {
+      "name": "李伟",
+      "registration_id": "A0000000000002",
+      "weekdays": [0, 2],
+      "aliases": ["李老师", "李伟老师"]
+    }
+  ],
+  "session_label": "直播课堂",
+  "holidays": []
+}
